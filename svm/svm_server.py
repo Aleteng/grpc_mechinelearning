@@ -1,4 +1,5 @@
 """The Python implementation of the GRPC svm.Greeter server."""
+# https://developers.google.com/protocol-buffers/docs/proto3
 
 from concurrent import futures
 import time
@@ -25,15 +26,14 @@ class Predict(svm_pb2_grpc.PredictServicer):
         # we create an instance of SVM and fit out data.
         C = 1.0  # SVM regularization parameter, learn more about C: https://blog.csdn.net/mingtian715/article/details/54574700
         self.model = svm.LinearSVC(C=C)
-        t = self.model.fit(X, y)
-        print(type(t))
+        self.model.fit(X, y)
 
     def Prediction(self, request, context):
         # test, generate an array
         test_result_array = self.model.predict([request.feature])
         # from array to list
         test_result = test_result_array.tolist()[0]
-        return test_result
+        return svm_pb2.FlowerClass(result=test_result)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

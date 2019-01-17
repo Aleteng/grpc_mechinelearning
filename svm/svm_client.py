@@ -15,10 +15,11 @@ def run():
     # of the code.
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = svm_pb2_grpc.PredictStub(channel)
-        #for i in range(len(FEATURE)):
-        response = stub.Prediction(svm_pb2.FlowerFeature(feature=FEATURE))
-        print("Feature: " + request.feature)
-    print("Greeter client received: " + response.result)
+        features = svm_pb2.FlowerFeature()
+        features.feature.extend(FEATURE)
+        print(type(features))
+        response = stub.Prediction(features)
+    print("Greeter client received: %s" %response.result)
 
 
 if __name__ == '__main__':

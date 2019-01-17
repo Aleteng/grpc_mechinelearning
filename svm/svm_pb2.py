@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='svm.proto',
   package='svm',
   syntax='proto3',
-  serialized_options=_b('\n\024io.grpc.examples.svmB\010SVMProtoP\001\242\002\003SVM'),
-  serialized_pb=_b('\n\tsvm.proto\x12\x03svm\" \n\rFlowerFeature\x12\x0f\n\x07\x66\x65\x61ture\x18\x01 \x03(\x02\"\x1d\n\x0b\x46lowerClass\x12\x0e\n\x06result\x18\x01 \x01(\t2?\n\x07Predict\x12\x34\n\nPrediction\x12\x12.svm.FlowerFeature\x1a\x10.svm.FlowerClass\"\x00\x42(\n\x14io.grpc.examples.svmB\x08SVMProtoP\x01\xa2\x02\x03SVMb\x06proto3')
+  serialized_options=None,
+  serialized_pb=_b('\n\tsvm.proto\x12\x03svm\" \n\rFlowerFeature\x12\x0f\n\x07\x66\x65\x61ture\x18\x01 \x03(\x02\"\x1d\n\x0b\x46lowerClass\x12\x0e\n\x06result\x18\x01 \x01(\x05\x32?\n\x07Predict\x12\x34\n\nPrediction\x12\x12.svm.FlowerFeature\x1a\x10.svm.FlowerClass\"\x00\x62\x06proto3')
 )
 
 
@@ -65,8 +65,8 @@ _FLOWERCLASS = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='result', full_name='svm.FlowerClass.result', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -105,7 +105,6 @@ FlowerClass = _reflection.GeneratedProtocolMessageType('FlowerClass', (_message.
 _sym_db.RegisterMessage(FlowerClass)
 
 
-DESCRIPTOR._options = None
 
 _PREDICT = _descriptor.ServiceDescriptor(
   name='Predict',
