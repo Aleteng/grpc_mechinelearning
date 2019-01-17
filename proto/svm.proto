@@ -1,0 +1,27 @@
+// 在server上训练数据，client发起请求，server给出预测结果。
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.svm";
+option java_outer_classname = "SVMProto";
+option objc_class_prefix = "SVM";
+
+package svm;
+
+// The predict service definition.
+service Predict {
+  // Sends a request and returns a prediction.
+  rpc Prediction (FlowerFeature) returns (FlowerClass) {}
+}
+
+// The request message containing the flower's feature.
+message FlowerFeature {
+  // string feature = 1;
+  repeated float feature = 1;
+}
+
+// The response message containing the result.
+message FlowerClass {
+  string result = 1;
+}
