@@ -2,11 +2,6 @@
 
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_package = "io.grpc.examples.svm";
-option java_outer_classname = "SVMProto";
-option objc_class_prefix = "SVM";
-
 package svm;
 
 // The predict service definition.
@@ -23,5 +18,5 @@ message FlowerFeature {
 
 // The response message containing the result.
 message FlowerClass {
-  string result = 1;
+  int32 result = 1;
 }
